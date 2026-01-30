@@ -28,15 +28,16 @@ export default async function DomainsPage({
         <AnimatedSection className="container space-y-8">
           <div className="grid gap-6 md:grid-cols-3">
           {dict.domains.items.map((item, index) => {
+          // Images des domaines d'intervention - Accessibilité : descriptions contextuelles détaillées
           const images = [
             "/images/photos/serre-exterieur.jpg",
             "/images/photos/habitat-1.jpg",
             "/images/photos/usine-fabrication.jpg",
           ];
           const imageAlt = [
-            "Serre agricole HydroControl",
-            "Habitat HydroControl",
-            "Installation industrielle HydroControl",
+            `${item.title} - Serre agricole extérieure équipée de systèmes HydroControl pour l'optimisation énergétique et la gestion de l'eau`,
+            `${item.title} - Habitat résidentiel bénéficiant des solutions HydroControl pour la rénovation énergétique et le confort thermique`,
+            `${item.title} - Site industriel avec installation HydroControl pour la régulation climatique et l'optimisation des ressources en eau`,
           ];
           return (
             <div
@@ -46,7 +47,7 @@ export default async function DomainsPage({
               <div className="relative h-64 w-full">
                 <Image
                   src={images[index] || images[0]}
-                  alt={imageAlt[index] || item.title}
+                  alt={imageAlt[index] || `${item.title} - ${item.text}`}
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 33vw"
@@ -82,11 +83,12 @@ export default async function DomainsPage({
               Découvrez nos installations en serres agricoles
             </p>
           </div>
+          {/* Section dédiée aux serres agricoles - Accessibilité : descriptions détaillées des installations */}
           <div className="grid gap-6 md:grid-cols-2">
             <div className="relative h-80 w-full overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
               <Image
                 src="/images/photos/serre-exterieur.jpg"
-                alt="Serre agricole extérieure HydroControl"
+                alt="Vue extérieure d'une serre agricole équipée de systèmes HydroControl pour la régulation climatique et l'optimisation énergétique"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -95,7 +97,7 @@ export default async function DomainsPage({
             <div className="relative h-80 w-full overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
               <Image
                 src="/images/photos/serre-interieure.jpg"
-                alt="Serre agricole intérieure HydroControl"
+                alt="Vue intérieure d'une serre agricole avec installation HydroControl montrant les systèmes de régulation thermique et hydrique en action"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"

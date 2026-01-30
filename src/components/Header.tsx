@@ -43,10 +43,12 @@ export function Header({ locale, nav, common }: HeaderProps) {
         <Link
           href={withLocale(locale, "/")}
           className="flex items-center gap-2"
+          aria-label="HydroControl - Retour à l'accueil"
         >
+          {/* Logo de l'entreprise - Accessibilité : alt descriptif pour les lecteurs d'écran */}
           <Image
             src="/images/logo/logo.png"
-            alt="HydroControl"
+            alt="Logo HydroControl - Goutte d'eau bleue et verte symbolisant la gestion de l'eau et de l'énergie"
             width={80}
             height={80}
             className="h-20 w-auto"
@@ -84,7 +86,7 @@ export function Header({ locale, nav, common }: HeaderProps) {
           />
           <Link
             href={withLocale(locale, "/contact")}
-            className="button-cta rounded-full border border-border px-5 py-2 text-sm font-semibold !text-accent transition-all hover:bg-eco hover:!text-white"
+            className="button-cta rounded-full border border-eco px-5 py-2 text-sm font-semibold !text-accent transition-all hover:bg-eco hover:!text-white"
           >
             {nav.cta}
           </Link>

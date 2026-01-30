@@ -165,7 +165,7 @@ export function ContactForm({
         <button
           type="submit"
           disabled={status === "loading"}
-          className="button-cta rounded-full border border-border px-5 py-2 text-sm font-semibold !text-accent transition-all hover:bg-eco hover:!text-white disabled:opacity-60 disabled:animate-none"
+          className="button-cta rounded-full border border-eco px-5 py-2 text-sm font-semibold !text-accent transition-all hover:bg-eco hover:!text-white disabled:opacity-60 disabled:animate-none"
         >
           {submitLabel}
         </button>

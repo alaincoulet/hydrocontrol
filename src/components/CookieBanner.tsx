@@ -43,7 +43,7 @@ export function CookieBanner({
         <button
           type="button"
           onClick={accept}
-          className="button-cta rounded-full border border-border px-5 py-2 text-sm font-semibold !text-accent transition-all hover:bg-eco hover:!text-white"
+          className="button-cta rounded-full border border-eco px-5 py-2 text-sm font-semibold !text-accent transition-all hover:bg-eco hover:!text-white"
         >
           {acceptLabel}
         </button>

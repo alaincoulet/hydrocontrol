@@ -27,10 +27,11 @@ export default async function AboutPage({
       <div className="pt-20">
         <AnimatedSection className="container grid gap-10 lg:grid-cols-[1fr_1fr]">
         <div className="space-y-6">
+          {/* Image de l'espace de travail - Accessibilité : description du contexte professionnel */}
           <div className="relative h-64 w-full overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
             <Image
               src="/images/photos/espace-travail.jpg"
-              alt="Espace de travail HydroControl"
+              alt="Espace de travail et bureau HydroControl, illustrant l'environnement professionnel de l'entreprise depuis 2005"
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 50vw"

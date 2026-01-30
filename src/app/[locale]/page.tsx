@@ -37,27 +37,30 @@ export default async function HomePage({
             <div className="flex flex-wrap gap-3 pt-4">
               <Link
                 href={withLocale(locale, "/contact")}
-                className="button-cta rounded-full border border-border px-5 py-2 text-sm font-semibold !text-accent transition-all hover:bg-eco hover:!text-white"
+                className="button-cta rounded-full border border-eco px-5 py-2 text-sm font-semibold !text-accent transition-all hover:bg-eco hover:!text-white"
               >
                 {dict.common.ctaPrimary}
               </Link>
               <Link
                 href={withLocale(locale, "/services")}
-                className="button-cta rounded-full border border-border px-5 py-2 text-sm font-semibold !text-accent transition-all hover:bg-eco hover:!text-white"
+                className="button-cta rounded-full border border-eco px-5 py-2 text-sm font-semibold !text-accent transition-all hover:bg-eco hover:!text-white"
               >
                 {dict.common.ctaSecondary}
               </Link>
             </div>
           </div>
-          <div className="relative h-full min-h-[400px] w-full overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
-            <Image
-              src="/images/photos/machine-fermée.jpg"
-              alt="Installation HydroControl"
-              fill
-              className="object-cover"
-              priority
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
+          <div className="pt-8">
+            {/* Image hero - Accessibilité : description détaillée du contenu visuel pour les utilisateurs de lecteurs d'écran */}
+            <div className="relative h-full min-h-[400px] w-full overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
+              <Image
+                src="/images/photos/machine-fermée.jpg"
+                alt="Machine de régulation énergétique HydroControl installée dans une serre agricole avec des plantes en arrière-plan, illustrant l'application de nos solutions techniques"
+                fill
+                className="object-cover object-[center_75%]"
+                priority
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -92,10 +95,16 @@ export default async function HomePage({
         </div>
         <div className="grid gap-6 md:grid-cols-3">
           {dict.home.domains.map((domain, index) => {
+            // Images des domaines d'intervention - Accessibilité : descriptions contextuelles
             const images = [
               "/images/photos/serre-exterieur.jpg",
               "/images/photos/habitat-1.jpg",
               "/images/photos/usine-fabrication.jpg",
+            ];
+            const imageAlts = [
+              "Serre agricole extérieure équipée de systèmes HydroControl pour l'optimisation énergétique et hydrique",
+              "Habitat résidentiel bénéficiant des solutions HydroControl pour la rénovation énergétique",
+              "Site industriel avec installation HydroControl pour la gestion optimale de l'énergie et de l'eau",
             ];
             return (
               <Link
@@ -106,7 +115,7 @@ export default async function HomePage({
                 <div className="relative h-48 w-full">
                   <Image
                     src={images[index] || images[0]}
-                    alt={domain.title}
+                    alt={imageAlts[index] || `${domain.title} - ${dict.home.domainsLead}`}
                     fill
                     className="object-cover transition-transform group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, 33vw"

@@ -24,14 +24,20 @@ export default async function ServicesPage({
         </div>
       </section>
 
-      <div className="pt-20">
+      <div className="pt-4">
         <AnimatedSection className="container space-y-8">
           <div className="grid gap-6 md:grid-cols-3">
           {dict.services.items.map((item, index) => {
+          // Images des services - Accessibilité : descriptions détaillées incluant le contexte du service
           const images = [
             "/images/photos/habitat-2.jpg",
             "/images/photos/machine-fermée.jpg",
             "/images/photos/serre-interieure.jpg",
+          ];
+          const imageAlts = [
+            `${item.title} - Schéma technique illustrant les solutions HydroControl pour la rénovation énergétique dans l'habitat`,
+            `${item.title} - Équipement HydroControl de déshumidification et régulation climatique`,
+            `${item.title} - Installation HydroControl dans une serre agricole pour l'optimisation énergétique et hydrique`,
           ];
           return (
             <div
@@ -41,7 +47,7 @@ export default async function ServicesPage({
               <div className="relative h-48 w-full">
                 <Image
                   src={images[index] || images[0]}
-                  alt={item.title}
+                  alt={imageAlts[index] || `${item.title} - ${item.problem}`}
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 33vw"

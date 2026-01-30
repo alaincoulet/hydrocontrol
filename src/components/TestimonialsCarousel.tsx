@@ -46,10 +46,11 @@ export function TestimonialsCarousel({
           className="rounded-3xl border border-border bg-card shadow-sm overflow-hidden"
         >
           <div className="grid gap-0 md:grid-cols-2">
+            {/* Image du témoignage - Accessibilité : description incluant le nom de l'entreprise et le contexte */}
             <div className="relative h-64 md:h-full min-h-[300px]">
               <Image
                 src={currentTestimonial.image}
-                alt={currentTestimonial.company}
+                alt={`Témoignage ${currentTestimonial.company} - ${currentTestimonial.context}`}
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
