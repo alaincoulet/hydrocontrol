@@ -11,7 +11,7 @@ export default async function CookiesPage({
 
   return (
     <div className="container space-y-6 pb-16 pt-12">
-      <h1 className="text-3xl font-semibold">{dict.legal.cookiesTitle}</h1>
+      <h1 className="text-3xl font-semibold text-eco">{dict.legal.cookiesTitle}</h1>
       <p className="text-foreground/70">{dict.legal.lead}</p>
       <div className="space-y-4 text-sm text-foreground/70">
         {dict.legal.cookiesContent.map((item) => (

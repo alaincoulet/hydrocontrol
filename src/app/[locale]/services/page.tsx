@@ -14,18 +14,22 @@ export default async function ServicesPage({
   return (
     <div className="space-y-12 pb-16">
       <section className="bg-gradient-to-b from-card to-background">
-        <div className="container space-y-4 py-12">
-          <h1 className="text-3xl font-semibold md:text-4xl">
-            {dict.services.title}
-          </h1>
-          <p className="text-foreground/70">{dict.services.lead}</p>
+        <div className="container py-16">
+          <div className="space-y-3">
+            <h1 className="pt-8 text-3xl font-semibold md:text-4xl text-eco">
+              {dict.services.title}
+            </h1>
+            <p className="text-foreground/70">{dict.services.lead}</p>
+          </div>
         </div>
       </section>
 
-      <AnimatedSection className="container grid gap-6 md:grid-cols-3">
-        {dict.services.items.map((item, index) => {
+      <div className="pt-20">
+        <AnimatedSection className="container space-y-8">
+          <div className="grid gap-6 md:grid-cols-3">
+          {dict.services.items.map((item, index) => {
           const images = [
-            "/images/photos/presentation-machine-clean.png",
+            "/images/photos/habitat-2.jpg",
             "/images/photos/machine-fermée.jpg",
             "/images/photos/serre-interieure.jpg",
           ];
@@ -44,16 +48,16 @@ export default async function ServicesPage({
                 />
               </div>
               <div className="p-6">
-                <h2 className="text-lg font-semibold">{item.title}</h2>
+                <h2 className="text-lg font-semibold text-eco">{item.title}</h2>
                 <div className="mt-4 space-y-3 text-sm text-foreground/70">
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-widest text-eco">
+                    <p className="text-xs font-semibold uppercase tracking-widest text-accent">
                       {dict.services.problemLabel}
                     </p>
                     <p>{item.problem}</p>
                   </div>
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-widest text-eco">
+                    <p className="text-xs font-semibold uppercase tracking-widest text-accent">
                       {dict.services.solutionLabel}
                     </p>
                     <p>{item.solution}</p>
@@ -62,8 +66,10 @@ export default async function ServicesPage({
               </div>
             </div>
           );
-        })}
-      </AnimatedSection>
+          })}
+          </div>
+        </AnimatedSection>
+      </div>
     </div>
   );
 }

@@ -59,3 +59,71 @@ a {
   margin: 0 auto;
   padding: 0 1.5rem;
 }
+
+@keyframes button-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(31, 143, 74, 0);
+  }
+  50% {
+    box-shadow: 0 0 12px 4px rgba(31, 143, 74, 0.3);
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+@keyframes click-pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(31, 143, 74, 0.7);
+  }
+  50% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 10px rgba(31, 143, 74, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(31, 143, 74, 0);
+  }
+}
+
+.button-cta {
+  animation: button-glow 2s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.button-cta::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 70%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.button-cta:active {
+  animation: click-pulse 0.3s ease-out, button-glow 2s ease-in-out infinite 0.3s;
+  transform: scale(0.97);
+}
+
+.button-cta:active::before {
+  width: 400px;
+  height: 400px;
+  animation: ripple 0.6s ease-out;
+  opacity: 0;
+}

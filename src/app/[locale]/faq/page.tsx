@@ -13,15 +13,18 @@ export default async function FaqPage({
   return (
     <div className="space-y-12 pb-16">
       <section className="bg-gradient-to-b from-card to-background">
-        <div className="container space-y-4 py-12">
-          <h1 className="text-3xl font-semibold md:text-4xl">
-            {dict.faq.title}
-          </h1>
-          <p className="text-foreground/70">{dict.faq.lead}</p>
+        <div className="container py-16">
+          <div className="space-y-3">
+            <h1 className="pt-8 text-3xl font-semibold md:text-4xl text-eco">
+              {dict.faq.title}
+            </h1>
+            <p className="text-foreground/70">{dict.faq.lead}</p>
+          </div>
         </div>
       </section>
 
-      <AnimatedSection className="container space-y-4">
+      <div className="pt-20">
+        <AnimatedSection className="container space-y-8">
         {dict.faq.items.map((item) => (
           <details
             key={item.question}
@@ -34,7 +37,8 @@ export default async function FaqPage({
             <p className="mt-3 text-sm text-foreground/70">{item.answer}</p>
           </details>
         ))}
-      </AnimatedSection>
+        </AnimatedSection>
+      </div>
     </div>
   );
 }

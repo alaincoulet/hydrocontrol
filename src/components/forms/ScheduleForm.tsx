@@ -85,7 +85,7 @@ export function ScheduleForm({
       <button
         type="submit"
         disabled={status === "loading"}
-        className="rounded-full bg-eco px-4 py-2 text-sm font-semibold text-white disabled:opacity-60"
+        className="button-cta rounded-full border border-border px-5 py-2 text-sm font-semibold !text-accent transition-all hover:bg-eco hover:!text-white disabled:opacity-60 disabled:animate-none"
       >
         {ctaLabel}
       </button>

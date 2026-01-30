@@ -14,25 +14,29 @@ export default async function DomainsPage({
   return (
     <div className="space-y-12 pb-16">
       <section className="bg-gradient-to-b from-card to-background">
-        <div className="container space-y-4 py-12">
-          <h1 className="text-3xl font-semibold md:text-4xl">
-            {dict.domains.title}
-          </h1>
-          <p className="text-foreground/70">{dict.domains.lead}</p>
+        <div className="container py-16">
+          <div className="space-y-3">
+            <h1 className="pt-8 text-3xl font-semibold md:text-4xl text-eco">
+              {dict.domains.title}
+            </h1>
+            <p className="text-foreground/70">{dict.domains.lead}</p>
+          </div>
         </div>
       </section>
 
-      <AnimatedSection className="container grid gap-6 md:grid-cols-3">
-        {dict.domains.items.map((item, index) => {
+      <div className="pt-20">
+        <AnimatedSection className="container space-y-8">
+          <div className="grid gap-6 md:grid-cols-3">
+          {dict.domains.items.map((item, index) => {
           const images = [
             "/images/photos/serre-exterieur.jpg",
+            "/images/photos/habitat-1.jpg",
             "/images/photos/usine-fabrication.jpg",
-            "/images/photos/espace-travail.jpg",
           ];
           const imageAlt = [
             "Serre agricole HydroControl",
+            "Habitat HydroControl",
             "Installation industrielle HydroControl",
-            "Espace de travail HydroControl",
           ];
           return (
             <div
@@ -49,7 +53,7 @@ export default async function DomainsPage({
                 />
               </div>
               <div className="p-6">
-                <h2 className="text-lg font-semibold">{item.title}</h2>
+                <h2 className="text-lg font-semibold text-eco">{item.title}</h2>
                 <p className="mt-2 text-sm text-foreground/70">{item.text}</p>
                 <ul className="mt-4 space-y-2 text-sm text-foreground/70">
                   {item.highlights.map((highlight) => (
@@ -62,13 +66,16 @@ export default async function DomainsPage({
               </div>
             </div>
           );
-        })}
-      </AnimatedSection>
+          })}
+          </div>
+        </AnimatedSection>
+      </div>
 
       {dict.domains.items[0] && (
-        <AnimatedSection className="container space-y-6">
+        <div className="pt-20">
+          <AnimatedSection className="container space-y-8">
           <div className="space-y-3">
-            <h2 className="text-2xl font-semibold md:text-3xl">
+            <h2 className="text-2xl font-semibold md:text-3xl text-eco">
               {dict.domains.items[0].title}
             </h2>
             <p className="text-foreground/70">
@@ -95,7 +102,8 @@ export default async function DomainsPage({
               />
             </div>
           </div>
-        </AnimatedSection>
+          </AnimatedSection>
+        </div>
       )}
     </div>
   );

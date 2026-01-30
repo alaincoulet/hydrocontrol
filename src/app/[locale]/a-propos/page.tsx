@@ -14,15 +14,18 @@ export default async function AboutPage({
   return (
     <div className="space-y-12 pb-16">
       <section className="bg-gradient-to-b from-card to-background">
-        <div className="container space-y-4 py-12">
-          <h1 className="text-3xl font-semibold md:text-4xl">
-            {dict.about.title}
-          </h1>
-          <p className="text-foreground/70">{dict.about.lead}</p>
+        <div className="container py-16">
+          <div className="space-y-3">
+            <h1 className="pt-8 text-3xl font-semibold md:text-4xl text-eco">
+              {dict.about.title}
+            </h1>
+            <p className="text-foreground/70">{dict.about.lead}</p>
+          </div>
         </div>
       </section>
 
-      <AnimatedSection className="container grid gap-10 lg:grid-cols-[1fr_1fr]">
+      <div className="pt-20">
+        <AnimatedSection className="container grid gap-10 lg:grid-cols-[1fr_1fr]">
         <div className="space-y-6">
           <div className="relative h-64 w-full overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
             <Image
@@ -34,14 +37,14 @@ export default async function AboutPage({
             />
           </div>
           <div className="rounded-3xl border border-border bg-card p-6 shadow-sm">
-            <h2 className="text-xl font-semibold">{dict.about.historyTitle}</h2>
+            <h2 className="text-xl font-semibold text-eco">{dict.about.historyTitle}</h2>
             <p className="mt-3 text-sm text-foreground/70">
               {dict.about.historyText}
             </p>
           </div>
         </div>
         <div className="rounded-3xl border border-border bg-card p-6 shadow-sm">
-          <h2 className="text-xl font-semibold">{dict.about.valuesTitle}</h2>
+          <h2 className="text-xl font-semibold text-eco">{dict.about.valuesTitle}</h2>
           <div className="mt-4 space-y-3">
             {dict.about.values.map((value) => (
               <div key={value.title} className="rounded-2xl bg-muted p-4">
@@ -51,7 +54,8 @@ export default async function AboutPage({
             ))}
           </div>
         </div>
-      </AnimatedSection>
+        </AnimatedSection>
+      </div>
     </div>
   );
 }

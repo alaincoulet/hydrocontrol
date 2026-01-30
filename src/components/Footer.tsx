@@ -13,7 +13,10 @@ export function Footer({ locale, footer, nav }: FooterProps) {
     <footer className="border-t border-border bg-card/80">
       <div className="container grid gap-8 py-10 lg:grid-cols-[1.4fr_1fr_1fr]">
         <div className="space-y-3">
-          <div className="text-lg font-semibold">HydroControl</div>
+          <div className="text-lg font-semibold">
+            <span className="text-accent">Hydro</span>
+            <span className="text-eco">Control</span>
+          </div>
           <p className="text-sm text-foreground/70">{footer.slogan}</p>
           <p className="text-sm text-foreground/70">{footer.address}</p>
           <p className="text-sm text-foreground/70">{footer.hours}</p>
@@ -56,7 +59,9 @@ export function Footer({ locale, footer, nav }: FooterProps) {
         </div>
       </div>
       <div className="border-t border-border py-4 text-center text-xs text-foreground/60">
-        © {new Date().getFullYear()} HydroControl.{" "}
+        © {new Date().getFullYear()}{" "}
+        <span className="text-accent">Hydro</span>
+        <span className="text-eco">Control</span>.{" "}
         {locale === "fr"
           ? "Tous droits réservés."
           : locale === "en"

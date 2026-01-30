@@ -67,6 +67,14 @@ export type Dictionary = {
     leadMagnetText: string;
     trustTitle: string;
     trustItems: string[];
+    testimonialsTitle: string;
+    testimonialsLead: string;
+    testimonials: {
+      company: string;
+      quote: string;
+      context: string;
+      image: string;
+    }[];
   };
   services: {
     title: string;
@@ -177,9 +185,9 @@ const dictionaries: Record<Locale, Dictionary> = {
     },
     home: {
       heroTitle:
-        "Solutions techniques pour la rénovation énergétique et la gestion de l’eau",
+        "Solutions techniques pour la rénovation énergétique et l'optimisation des ressources en eau",
       heroLead:
-        "Depuis 2005, HydroControl accompagne les acteurs agricoles, industriels et les particuliers avec une approche terrain, fiable et durable.",
+        "Depuis 2005, HydroControl accompagne les professionnels et les particuliers dans l'amélioration de la performance énergétique et hydrique de leurs installations. L'entreprise s'inscrit dans une démarche de transition énergétique, avec une approche technique, durable et orientée efficacité.",
       heroPoints: [
         "Audit et diagnostic des installations",
         "Réduction mesurable des consommations",
@@ -253,6 +261,60 @@ const dictionaries: Record<Locale, Dictionary> = {
         "Approche technique et pédagogique",
         "Solutions sur-mesure, sans promesses excessives",
         "Engagement pour la transition énergétique",
+      ],
+      testimonialsTitle: "Ils nous font confiance",
+      testimonialsLead:
+        "Des entreprises et institutions de référence nous font confiance pour leurs enjeux énergétiques et hydriques.",
+      testimonials: [
+        {
+          company: "OVHcloud",
+          quote:
+            "HydroControl a optimisé la régulation climatique de nos salles serveurs. Résultats mesurables et expertise technique remarquable.",
+          context: "Régulation des salles serveurs",
+          image: "/images/photos/temoignage-ovh.jpg",
+        },
+        {
+          company: "Moët & Chandon",
+          quote:
+            "La maîtrise de l'hygrométrie de nos caves est critique. HydroControl a su répondre à nos exigences avec précision.",
+          context: "Régulation des caves de champagne",
+          image: "/images/photos/temoignage-cave.jpg",
+        },
+        {
+          company: "AURA SKOOL",
+          quote:
+            "L'optimisation énergétique de nos bureaux a été réalisée avec professionnalisme. Équipe réactive et solutions adaptées.",
+          context: "Optimisation énergétique des bureaux",
+          image: "/images/photos/temoignage-auraskool.png",
+        },
+        {
+          company: "France Rénov'",
+          quote:
+            "HydroControl est un partenaire de confiance pour accompagner les particuliers dans leur rénovation énergétique.",
+          context: "Accompagnement des particuliers",
+          image: "/images/photos/temoignage-francerenov.png",
+        },
+        {
+          company: "ADEME",
+          quote:
+            "HydroControl est notre premier partenaire pour la transition écologique en France. Expertise et engagement reconnus.",
+          context: "Partenaire transition écologique",
+          image: "/images/photos/temoignage-ADEME.jpg",
+        },
+        {
+          company: "AIRBUS",
+          quote:
+            "Le confort thermique de nos chaînes d'assemblage en France a été considérablement amélioré grâce à leurs solutions.",
+          context: "Confort thermique des chaînes d'assemblage",
+          image: "/images/photos/témoignage-airbus.jpg",
+        },
+        {
+          company: "Gouvernement du Groland",
+          quote:
+            "Les travaux réalisés au palais de l'Élysée démontrent l'excellence technique d'HydroControl dans les projets publics.",
+          context: "Travaux publics - Palais de l'Élysée",
+          image: "/images/photos/temoignage-macron.jpg",
+        },
       ],
     },
     services: {
@@ -473,9 +535,9 @@ const dictionaries: Record<Locale, Dictionary> = {
     },
     home: {
       heroTitle:
-        "Technical solutions for energy retrofit and water optimization",
+        "Technical solutions for energy renovation and water resource optimization",
       heroLead:
-        "Since 2005, HydroControl supports agriculture, industry and households with a reliable, field-driven approach.",
+        "Since 2005, HydroControl supports professionals and individuals in improving the energy and water performance of their installations. The company is committed to energy transition, with a technical, sustainable and efficiency-oriented approach.",
       heroPoints: [
         "Audit and diagnostics of installations",
         "Measurable reductions in consumption",
@@ -549,6 +611,60 @@ const dictionaries: Record<Locale, Dictionary> = {
         "Technical and educational approach",
         "Tailor-made solutions without hype",
         "Committed to energy transition",
+      ],
+      testimonialsTitle: "They trust us",
+      testimonialsLead:
+        "Leading companies and institutions trust us for their energy and water challenges.",
+      testimonials: [
+        {
+          company: "OVHcloud",
+          quote:
+            "HydroControl optimized the climate regulation of our server rooms. Measurable results and remarkable technical expertise.",
+          context: "Server room regulation",
+          image: "/images/photos/temoignage-ovh.jpg",
+        },
+        {
+          company: "Moët & Chandon",
+          quote:
+            "Controlling the humidity of our cellars is critical. HydroControl met our requirements with precision.",
+          context: "Champagne cellar regulation",
+          image: "/images/photos/temoignage-cave.jpg",
+        },
+        {
+          company: "AURA SKOOL",
+          quote:
+            "The energy optimization of our offices was carried out professionally. Responsive team and adapted solutions.",
+          context: "Office energy optimization",
+          image: "/images/photos/temoignage-auraskool.png",
+        },
+        {
+          company: "France Rénov'",
+          quote:
+            "HydroControl is a trusted partner for supporting individuals in their energy renovation.",
+          context: "Supporting individuals",
+          image: "/images/photos/temoignage-francerenov.png",
+        },
+        {
+          company: "ADEME",
+          quote:
+            "HydroControl is our primary partner for ecological transition in France. Recognized expertise and commitment.",
+          context: "Ecological transition partner",
+          image: "/images/photos/temoignage-ADEME.jpg",
+        },
+        {
+          company: "AIRBUS",
+          quote:
+            "The thermal comfort of our assembly lines in France has been significantly improved thanks to their solutions.",
+          context: "Assembly line thermal comfort",
+          image: "/images/photos/témoignage-airbus.jpg",
+        },
+        {
+          company: "Groland Government",
+          quote:
+            "The work carried out at the Élysée Palace demonstrates HydroControl's technical excellence in public projects.",
+          context: "Public works - Élysée Palace",
+          image: "/images/photos/temoignage-macron.jpg",
+        },
       ],
     },
     services: {
@@ -767,9 +883,9 @@ const dictionaries: Record<Locale, Dictionary> = {
     },
     home: {
       heroTitle:
-        "Soluciones técnicas para rehabilitación energética y gestión del agua",
+        "Soluciones técnicas para renovación energética y optimización de recursos hídricos",
       heroLead:
-        "Desde 2005, HydroControl acompaña agricultura, industria y hogares con un enfoque fiable y de terreno.",
+        "Desde 2005, HydroControl acompaña a profesionales y particulares en la mejora del rendimiento energético e hídrico de sus instalaciones. La empresa se compromete con la transición energética, con un enfoque técnico, sostenible y orientado a la eficiencia.",
       heroPoints: [
         "Auditoría y diagnóstico de instalaciones",
         "Reducciones medibles de consumo",
@@ -843,6 +959,60 @@ const dictionaries: Record<Locale, Dictionary> = {
         "Enfoque técnico y pedagógico",
         "Soluciones a medida sin promesas excesivas",
         "Compromiso con la transición energética",
+      ],
+      testimonialsTitle: "Confían en nosotros",
+      testimonialsLead:
+        "Empresas e instituciones de referencia confían en nosotros para sus desafíos energéticos e hídricos.",
+      testimonials: [
+        {
+          company: "OVHcloud",
+          quote:
+            "HydroControl optimizó la regulación climática de nuestras salas de servidores. Resultados medibles y experiencia técnica notable.",
+          context: "Regulación de salas de servidores",
+          image: "/images/photos/temoignage-ovh.jpg",
+        },
+        {
+          company: "Moët & Chandon",
+          quote:
+            "El control de la humedad de nuestras bodegas es crítico. HydroControl supo responder a nuestras exigencias con precisión.",
+          context: "Regulación de bodegas de champán",
+          image: "/images/photos/temoignage-cave.jpg",
+        },
+        {
+          company: "AURA SKOOL",
+          quote:
+            "La optimización energética de nuestras oficinas se realizó con profesionalismo. Equipo reactivo y soluciones adaptadas.",
+          context: "Optimización energética de oficinas",
+          image: "/images/photos/temoignage-auraskool.png",
+        },
+        {
+          company: "France Rénov'",
+          quote:
+            "HydroControl es un socio de confianza para acompañar a particulares en su rehabilitación energética.",
+          context: "Acompañamiento de particulares",
+          image: "/images/photos/temoignage-francerenov.png",
+        },
+        {
+          company: "ADEME",
+          quote:
+            "HydroControl es nuestro primer socio para la transición ecológica en Francia. Experiencia y compromiso reconocidos.",
+          context: "Socio de transición ecológica",
+          image: "/images/photos/temoignage-ADEME.jpg",
+        },
+        {
+          company: "AIRBUS",
+          quote:
+            "El confort térmico de nuestras líneas de montaje en Francia ha mejorado considerablemente gracias a sus soluciones.",
+          context: "Confort térmico de líneas de montaje",
+          image: "/images/photos/témoignage-airbus.jpg",
+        },
+        {
+          company: "Gobierno de Grolandia",
+          quote:
+            "Los trabajos realizados en el Palacio del Elíseo demuestran la excelencia técnica de HydroControl en proyectos públicos.",
+          context: "Obras públicas - Palacio del Elíseo",
+          image: "/images/photos/temoignage-macron.jpg",
+        },
       ],
     },
     services: {

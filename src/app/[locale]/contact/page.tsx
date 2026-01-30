@@ -16,17 +16,20 @@ export default async function ContactPage({
   return (
     <div className="space-y-12 pb-16">
       <section className="bg-gradient-to-b from-card to-background">
-        <div className="container space-y-4 py-12">
-          <h1 className="text-3xl font-semibold md:text-4xl">
-            {dict.contact.title}
-          </h1>
-          <p className="text-foreground/70">{dict.contact.lead}</p>
+        <div className="container py-16">
+          <div className="space-y-3">
+            <h1 className="pt-8 text-3xl font-semibold md:text-4xl text-eco">
+              {dict.contact.title}
+            </h1>
+            <p className="text-foreground/70">{dict.contact.lead}</p>
+          </div>
         </div>
       </section>
 
-      <AnimatedSection className="container grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+      <div className="pt-10">
+        <AnimatedSection className="container grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
         <div className="rounded-3xl border border-border bg-card p-6 shadow-sm">
-          <h2 className="text-xl font-semibold">{dict.contact.formTitle}</h2>
+          <h2 className="text-xl font-semibold text-eco">{dict.contact.formTitle}</h2>
           <div className="mt-6">
             <ContactForm
               locale={locale}
@@ -41,7 +44,7 @@ export default async function ContactPage({
         </div>
         <div className="space-y-6">
           <div className="rounded-3xl border border-border bg-card p-6 shadow-sm">
-            <h3 className="text-lg font-semibold">{dict.contact.calendarTitle}</h3>
+            <h3 className="text-lg font-semibold text-eco">{dict.contact.calendarTitle}</h3>
             <p className="mt-2 text-sm text-foreground/70">
               {dict.contact.calendarText}
             </p>
@@ -58,7 +61,7 @@ export default async function ContactPage({
             </div>
           </div>
           <div className="rounded-3xl border border-border bg-card p-6 shadow-sm">
-            <h3 className="text-lg font-semibold">{dict.common.downloadCta}</h3>
+            <h3 className="text-lg font-semibold text-eco">{dict.common.downloadCta}</h3>
             <LeadMagnetForm
               locale={locale}
               helper={dict.common.downloadHelper}
@@ -70,11 +73,13 @@ export default async function ContactPage({
             />
           </div>
         </div>
-      </AnimatedSection>
+        </AnimatedSection>
+      </div>
 
-      <AnimatedSection className="container">
+      <div className="pt-20">
+        <AnimatedSection className="container">
         <div className="rounded-3xl border border-border bg-card p-6 shadow-sm">
-          <h2 className="text-xl font-semibold">{dict.contact.mapTitle}</h2>
+          <h2 className="text-xl font-semibold text-eco">{dict.contact.mapTitle}</h2>
           <div className="mt-4 overflow-hidden rounded-2xl border border-border">
             <iframe
               title="HydroControl Lyon"
@@ -86,7 +91,8 @@ export default async function ContactPage({
             />
           </div>
         </div>
-      </AnimatedSection>
+        </AnimatedSection>
+      </div>
     </div>
   );
 }

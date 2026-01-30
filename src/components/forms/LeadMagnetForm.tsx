@@ -57,9 +57,9 @@ export function LeadMagnetForm({
   };
 
   return (
-    <form onSubmit={onSubmit} className="space-y-3">
+    <form onSubmit={onSubmit} className="flex flex-col flex-1 space-y-3">
       <p className="text-sm text-foreground/70">{helper}</p>
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+      <div className="flex flex-col gap-3 flex-1">
         <label className="sr-only" htmlFor="lead-email">
           {label}
         </label>
@@ -70,12 +70,12 @@ export function LeadMagnetForm({
           autoComplete="email"
           required
           placeholder={placeholder}
-          className="w-full flex-1 rounded-full border border-border bg-card px-4 py-2 text-sm"
+          className="w-full rounded-full border border-border bg-card px-4 py-2 text-sm"
         />
         <button
           type="submit"
           disabled={status === "loading"}
-          className="rounded-full bg-eco px-5 py-2 text-sm font-semibold text-white transition hover:opacity-90 disabled:opacity-60"
+          className="button-cta mt-auto w-full rounded-full border border-border px-5 py-2 text-sm font-semibold !text-accent transition-all hover:bg-eco hover:!text-white disabled:opacity-60 disabled:animate-none"
         >
           {cta}
         </button>

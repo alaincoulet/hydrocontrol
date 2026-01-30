@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { LeadMagnetForm } from "@/components/forms/LeadMagnetForm";
+import { TestimonialsCarousel } from "@/components/TestimonialsCarousel";
 import { getDictionary, Locale, validateLocale } from "@/lib/i18n";
 import { withLocale } from "@/lib/routes";
 import { organizationJsonLd } from "@/lib/seo";
@@ -20,11 +21,8 @@ export default async function HomePage({
     <div className="space-y-16 pb-16">
       <section className="bg-gradient-to-b from-card to-background">
         <div className="container grid gap-12 py-16 lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="space-y-6">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-eco">
-              {dict.common.companyName}
-            </p>
-            <h1 className="text-3xl font-semibold tracking-tight md:text-5xl">
+          <div className="space-y-8">
+            <h1 className="pt-8 text-3xl font-semibold tracking-tight md:text-5xl text-eco">
               {dict.home.heroTitle}
             </h1>
             <p className="text-lg text-foreground/70">{dict.home.heroLead}</p>
@@ -36,16 +34,16 @@ export default async function HomePage({
                 </li>
               ))}
             </ul>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-3 pt-4">
               <Link
                 href={withLocale(locale, "/contact")}
-                className="rounded-full bg-accent px-5 py-2 text-sm font-semibold text-white transition hover:bg-accent-strong"
+                className="button-cta rounded-full border border-border px-5 py-2 text-sm font-semibold !text-accent transition-all hover:bg-eco hover:!text-white"
               >
                 {dict.common.ctaPrimary}
               </Link>
               <Link
                 href={withLocale(locale, "/services")}
-                className="rounded-full border border-border px-5 py-2 text-sm font-semibold"
+                className="button-cta rounded-full border border-border px-5 py-2 text-sm font-semibold !text-accent transition-all hover:bg-eco hover:!text-white"
               >
                 {dict.common.ctaSecondary}
               </Link>
@@ -53,7 +51,7 @@ export default async function HomePage({
           </div>
           <div className="relative h-full min-h-[400px] w-full overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
             <Image
-              src="/images/photos/presentation-machine-clean.png"
+              src="/images/photos/machine-fermée.jpg"
               alt="Installation HydroControl"
               fill
               className="object-cover"
@@ -66,7 +64,7 @@ export default async function HomePage({
 
       <AnimatedSection className="container space-y-8">
         <div className="space-y-3">
-          <h2 className="text-2xl font-semibold md:text-3xl">
+          <h2 className="text-2xl font-semibold md:text-3xl text-eco">
             {dict.home.expertiseTitle}
           </h2>
           <p className="text-foreground/70">{dict.home.expertiseLead}</p>
@@ -77,26 +75,27 @@ export default async function HomePage({
               key={item.title}
               className="rounded-3xl border border-border bg-card p-6 shadow-sm"
             >
-              <h3 className="text-lg font-semibold">{item.title}</h3>
+              <h3 className="text-lg font-semibold text-eco">{item.title}</h3>
               <p className="mt-2 text-sm text-foreground/70">{item.text}</p>
             </div>
           ))}
         </div>
       </AnimatedSection>
 
-      <AnimatedSection className="container space-y-8">
-        <div className="space-y-3">
-          <h2 className="text-2xl font-semibold md:text-3xl">
-            {dict.home.domainsTitle}
-          </h2>
+      <div className="pt-20">
+        <AnimatedSection className="container space-y-8">
+          <div className="space-y-3">
+            <h2 className="text-2xl font-semibold md:text-3xl text-eco">
+              {dict.home.domainsTitle}
+            </h2>
           <p className="text-foreground/70">{dict.home.domainsLead}</p>
         </div>
         <div className="grid gap-6 md:grid-cols-3">
           {dict.home.domains.map((domain, index) => {
             const images = [
               "/images/photos/serre-exterieur.jpg",
+              "/images/photos/habitat-1.jpg",
               "/images/photos/usine-fabrication.jpg",
-              "/images/photos/espace-travail.jpg",
             ];
             return (
               <Link
@@ -114,7 +113,7 @@ export default async function HomePage({
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-lg font-semibold">{domain.title}</h3>
+                  <h3 className="text-lg font-semibold text-eco">{domain.title}</h3>
                   <p className="mt-2 text-sm text-foreground/70">{domain.text}</p>
                   <span className="mt-4 inline-flex text-sm font-semibold text-eco">
                     {dict.nav.domains}
@@ -124,13 +123,15 @@ export default async function HomePage({
             );
           })}
         </div>
-      </AnimatedSection>
+        </AnimatedSection>
+      </div>
 
-      <AnimatedSection className="container grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-        <div className="space-y-3">
-          <h2 className="text-2xl font-semibold md:text-3xl">
-            {dict.home.approachTitle}
-          </h2>
+      <div className="pt-20">
+        <AnimatedSection className="container grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="space-y-3">
+            <h2 className="text-2xl font-semibold md:text-3xl text-eco">
+              {dict.home.approachTitle}
+            </h2>
           <p className="text-foreground/70">{dict.home.approachLead}</p>
         </div>
         <div className="grid gap-4">
@@ -139,47 +140,66 @@ export default async function HomePage({
               key={step.title}
               className="rounded-2xl border border-border bg-card p-5"
             >
-              <h3 className="font-semibold">{step.title}</h3>
+              <h3 className="font-semibold text-eco">{step.title}</h3>
               <p className="mt-2 text-sm text-foreground/70">{step.text}</p>
             </div>
           ))}
         </div>
-      </AnimatedSection>
+        </AnimatedSection>
+      </div>
 
       <AnimatedSection className="container grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-        <div className="space-y-4 rounded-3xl border border-border bg-card p-6">
-          <h2 className="text-2xl font-semibold">{dict.home.leadMagnetTitle}</h2>
-          <p className="text-sm text-foreground/70">
-            {dict.home.leadMagnetText}
-          </p>
-          <LeadMagnetForm
-            locale={locale}
-            helper={dict.common.downloadHelper}
-            label={dict.common.downloadLabel}
-            cta={dict.common.downloadCta}
-            placeholder={dict.common.emailPlaceholder}
-            successMessage={dict.common.success}
-            errorMessage={dict.common.error}
-          />
+        <div className="flex flex-col rounded-3xl border border-border bg-card p-6">
+          <div className="space-y-4">
+            <h2 className="text-2xl font-semibold text-eco">{dict.home.leadMagnetTitle}</h2>
+            <p className="text-sm text-foreground/70">
+              {dict.home.leadMagnetText}
+            </p>
+            <LeadMagnetForm
+              locale={locale}
+              helper={dict.common.downloadHelper}
+              label={dict.common.downloadLabel}
+              cta={dict.common.downloadCta}
+              placeholder={dict.common.emailPlaceholder}
+              successMessage={dict.common.success}
+              errorMessage={dict.common.error}
+            />
+          </div>
         </div>
-        <div className="space-y-4 rounded-3xl border border-border bg-muted p-6">
-          <h2 className="text-2xl font-semibold">{dict.home.trustTitle}</h2>
-          <ul className="space-y-2 text-sm text-foreground/70">
-            {dict.home.trustItems.map((item) => (
-              <li key={item} className="flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-eco" />
-                {item}
-              </li>
-            ))}
-          </ul>
+        <div className="flex flex-col rounded-3xl border border-border bg-card p-6">
+          <div className="flex-1 space-y-4">
+            <h2 className="text-2xl font-semibold text-eco">{dict.home.trustTitle}</h2>
+            <ul className="space-y-2 text-sm text-foreground/70">
+              {dict.home.trustItems.map((item) => (
+                <li key={item} className="flex items-center gap-2">
+                  <span className="h-2 w-2 rounded-full bg-accent" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
           <Link
             href={withLocale(locale, "/contact")}
-            className="inline-flex rounded-full bg-accent px-5 py-2 text-sm font-semibold text-white"
+            className="button-cta mt-auto inline-flex w-full justify-center rounded-full border border-border px-5 py-2 text-sm font-semibold !text-accent transition-all hover:bg-eco hover:!text-white"
           >
             {dict.nav.cta}
           </Link>
         </div>
       </AnimatedSection>
+
+      <div className="pt-20">
+        <AnimatedSection className="container space-y-8">
+          <div className="space-y-3">
+            <h2 className="text-2xl font-semibold md:text-3xl text-eco">
+              {dict.home.testimonialsTitle}
+            </h2>
+            <p className="text-foreground/70">{dict.home.testimonialsLead}</p>
+          </div>
+          <div>
+            <TestimonialsCarousel testimonials={dict.home.testimonials} />
+          </div>
+        </AnimatedSection>
+      </div>
 
       <script
         type="application/ld+json"

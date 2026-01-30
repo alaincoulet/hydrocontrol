@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import clsx from "clsx";
 import { Dictionary, Locale } from "@/lib/i18n";
 import { withLocale } from "@/lib/routes";
@@ -26,9 +27,18 @@ const navItems = [
 
 export function Header({ locale, nav, common }: HeaderProps) {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isActive = (href: string) => {
+    const localizedHref = withLocale(locale, href);
+    if (href === "/") {
+      return pathname === `/${locale}` || pathname === `/${locale}/`;
+    }
+    return pathname === localizedHref || pathname.startsWith(`${localizedHref}/`);
+  };
 
   return (
-    <header className="border-b border-border bg-card/80 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur">
       <div className="container flex h-20 items-center justify-between gap-4">
         <Link
           href={withLocale(locale, "/")}
@@ -37,25 +47,32 @@ export function Header({ locale, nav, common }: HeaderProps) {
           <Image
             src="/images/logo/logo.png"
             alt="HydroControl"
-            width={40}
-            height={40}
-            className="h-10 w-auto"
+            width={80}
+            height={80}
+            className="h-20 w-auto"
             priority
           />
           <span className="text-lg font-semibold tracking-tight">
-            HydroControl
+            <span className="text-accent">Hydro</span>
+            <span className="text-eco">Control</span>
           </span>
         </Link>
         <nav className="hidden items-center gap-6 lg:flex" aria-label="Principal">
-          {navItems.map((item) => (
-            <Link
-              key={item.key}
-              href={withLocale(locale, item.href)}
-              className="text-sm font-medium text-foreground/80 transition hover:text-foreground"
-            >
-              {nav[item.key as keyof Dictionary["nav"]]}
-            </Link>
-          ))}
+          {navItems.map((item) => {
+            const active = isActive(item.href);
+            return (
+              <Link
+                key={item.key}
+                href={withLocale(locale, item.href)}
+                className={clsx(
+                  "relative pb-2 text-sm font-medium text-foreground/80 transition hover:text-foreground",
+                  active && "after:absolute after:-bottom-1 after:left-0 after:right-0 after:h-1 after:rounded-full after:bg-eco"
+                )}
+              >
+                {nav[item.key as keyof Dictionary["nav"]]}
+              </Link>
+            );
+          })}
         </nav>
         <div className="hidden items-center gap-3 lg:flex">
           <LocaleSwitcher currentLocale={locale} label={common.languageLabel} />
@@ -67,7 +84,7 @@ export function Header({ locale, nav, common }: HeaderProps) {
           />
           <Link
             href={withLocale(locale, "/contact")}
-            className="rounded-full bg-accent px-4 py-2 text-sm font-semibold text-white transition hover:bg-accent-strong"
+            className="button-cta rounded-full border border-border px-5 py-2 text-sm font-semibold !text-accent transition-all hover:bg-eco hover:!text-white"
           >
             {nav.cta}
           </Link>
@@ -100,20 +117,26 @@ export function Header({ locale, nav, common }: HeaderProps) {
             />
           </div>
           <nav className="flex flex-col gap-2" aria-label="Mobile">
-            {navItems.map((item) => (
-              <Link
-                key={item.key}
-                href={withLocale(locale, item.href)}
-                className="rounded-lg px-3 py-2 text-sm font-medium text-foreground/80 hover:bg-muted"
-                onClick={() => setOpen(false)}
-              >
-                {nav[item.key as keyof Dictionary["nav"]]}
-              </Link>
-            ))}
+            {navItems.map((item) => {
+              const active = isActive(item.href);
+              return (
+                <Link
+                  key={item.key}
+                  href={withLocale(locale, item.href)}
+                  className={clsx(
+                    "rounded-lg px-3 py-2 text-sm font-medium text-foreground/80 hover:bg-muted",
+                    active && "border-l-4 border-eco bg-muted/50"
+                  )}
+                  onClick={() => setOpen(false)}
+                >
+                  {nav[item.key as keyof Dictionary["nav"]]}
+                </Link>
+              );
+            })}
           </nav>
           <Link
             href={withLocale(locale, "/contact")}
-            className="rounded-full bg-accent px-4 py-2 text-center text-sm font-semibold text-white transition hover:bg-accent-strong"
+            className="button-cta rounded-full border border-border px-5 py-2 text-center text-sm font-semibold !text-accent transition-all hover:bg-eco hover:!text-white"
             onClick={() => setOpen(false)}
           >
             {nav.cta}
