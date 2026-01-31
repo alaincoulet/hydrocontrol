@@ -19,13 +19,18 @@ export default async function HomePage({
 
   return (
     <div className="space-y-16 pb-16">
-      <section className="bg-gradient-to-b from-card to-background">
+      <section className="bg-gradient-to-b from-card via-card to-background">
         <div className="container grid gap-12 py-16 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="space-y-8">
-            <h1 className="pt-8 text-3xl font-semibold tracking-tight md:text-5xl text-eco">
+            <span className="inline-flex items-center rounded-full border border-border bg-white/80 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-foreground/70">
+              {dict.common.slogan}
+            </span>
+            <h1 className="text-3xl font-semibold tracking-tight md:text-5xl text-eco">
               {dict.home.heroTitle}
             </h1>
-            <p className="text-lg text-foreground/70">{dict.home.heroLead}</p>
+            <p className="max-w-xl text-lg text-foreground/70">
+              {dict.home.heroLead}
+            </p>
             <ul className="space-y-2 text-sm text-foreground/70">
               {dict.home.heroPoints.map((point) => (
                 <li key={point} className="flex items-center gap-2">
@@ -37,16 +42,29 @@ export default async function HomePage({
             <div className="flex flex-wrap gap-3 pt-4">
               <Link
                 href={withLocale(locale, "/contact")}
-                className="button-cta rounded-full border border-eco px-5 py-2 text-sm font-semibold !text-accent transition-all hover:bg-eco hover:!text-white"
+                className="button-cta rounded-full bg-eco px-6 py-2 text-sm font-semibold text-white shadow-lg shadow-eco/20 transition-all hover:-translate-y-0.5 hover:bg-eco/90"
               >
                 {dict.common.ctaPrimary}
               </Link>
               <Link
                 href={withLocale(locale, "/services")}
-                className="button-cta rounded-full border border-eco px-5 py-2 text-sm font-semibold !text-accent transition-all hover:bg-eco hover:!text-white"
+                className="button-secondary rounded-full border border-border px-6 py-2 text-sm font-semibold text-foreground/80 transition-all hover:border-eco hover:text-eco"
               >
                 {dict.common.ctaSecondary}
               </Link>
+            </div>
+            <div className="grid gap-4 pt-4 sm:grid-cols-3">
+              {dict.home.stats.map((stat) => (
+                <div
+                  key={stat.label}
+                  className="rounded-2xl border border-border bg-card px-4 py-3 shadow-sm"
+                >
+                  <p className="text-xs font-semibold uppercase tracking-wide text-foreground/60">
+                    {stat.label}
+                  </p>
+                  <p className="mt-1 text-lg font-semibold text-eco">{stat.value}</p>
+                </div>
+              ))}
             </div>
           </div>
           <div className="pt-8">
@@ -73,12 +91,17 @@ export default async function HomePage({
           <p className="text-foreground/70">{dict.home.expertiseLead}</p>
         </div>
         <div className="grid gap-6 md:grid-cols-3">
-          {dict.home.expertises.map((item) => (
+          {dict.home.expertises.map((item, index) => (
             <div
               key={item.title}
-              className="rounded-3xl border border-border bg-card p-6 shadow-sm"
+              className="rounded-3xl border border-border bg-card p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md"
             >
-              <h3 className="text-lg font-semibold text-eco">{item.title}</h3>
+              <div className="flex items-center gap-3">
+                <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-accent/10 text-base font-semibold text-accent">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <h3 className="text-lg font-semibold text-eco">{item.title}</h3>
+              </div>
               <p className="mt-2 text-sm text-foreground/70">{item.text}</p>
             </div>
           ))}
@@ -91,47 +114,50 @@ export default async function HomePage({
             <h2 className="text-2xl font-semibold md:text-3xl text-eco">
               {dict.home.domainsTitle}
             </h2>
-          <p className="text-foreground/70">{dict.home.domainsLead}</p>
-        </div>
-        <div className="grid gap-6 md:grid-cols-3">
-          {dict.home.domains.map((domain, index) => {
-            // Images des domaines d'intervention - Accessibilité : descriptions contextuelles
-            const images = [
-              "/images/photos/serre-exterieur.jpg",
-              "/images/photos/habitat-1.jpg",
-              "/images/photos/usine-fabrication.jpg",
-            ];
-            const imageAlts = [
-              "Serre agricole extérieure équipée de systèmes HydroControl pour l'optimisation énergétique et hydrique",
-              "Habitat résidentiel bénéficiant des solutions HydroControl pour la rénovation énergétique",
-              "Site industriel avec installation HydroControl pour la gestion optimale de l'énergie et de l'eau",
-            ];
-            return (
-              <Link
-                key={domain.title}
-                href={withLocale(locale, domain.href)}
-                className="group relative overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition hover:-translate-y-1 hover:shadow-md"
-              >
-                <div className="relative h-48 w-full">
-                  <Image
-                    src={images[index] || images[0]}
-                    alt={imageAlts[index] || `${domain.title} - ${dict.home.domainsLead}`}
-                    fill
-                    className="object-cover transition-transform group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-lg font-semibold text-eco">{domain.title}</h3>
-                  <p className="mt-2 text-sm text-foreground/70">{domain.text}</p>
-                  <span className="mt-4 inline-flex text-sm font-semibold text-eco">
-                    {dict.nav.domains}
-                  </span>
-                </div>
-              </Link>
-            );
-          })}
-        </div>
+            <p className="text-foreground/70">{dict.home.domainsLead}</p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            {dict.home.domains.map((domain, index) => {
+              // Images des domaines d'intervention - Accessibilité : descriptions contextuelles
+              const images = [
+                "/images/photos/serre-exterieur.jpg",
+                "/images/photos/habitat-1.jpg",
+                "/images/photos/usine-fabrication.jpg",
+              ];
+              const imageAlts = [
+                "Serre agricole extérieure équipée de systèmes HydroControl pour l'optimisation énergétique et hydrique",
+                "Habitat résidentiel bénéficiant des solutions HydroControl pour la rénovation énergétique",
+                "Site industriel avec installation HydroControl pour la gestion optimale de l'énergie et de l'eau",
+              ];
+              return (
+                <Link
+                  key={domain.title}
+                  href={withLocale(locale, domain.href)}
+                  className="group relative overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+                >
+                  <div className="relative h-48 w-full">
+                    <Image
+                      src={images[index] || images[0]}
+                      alt={
+                        imageAlts[index] ||
+                        `${domain.title} - ${dict.home.domainsLead}`
+                      }
+                      fill
+                      className="object-cover transition-transform group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-lg font-semibold text-eco">{domain.title}</h3>
+                    <p className="mt-2 text-sm text-foreground/70">{domain.text}</p>
+                    <span className="mt-4 inline-flex text-sm font-semibold text-eco">
+                      {dict.nav.domains}
+                    </span>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
         </AnimatedSection>
       </div>
 
@@ -158,7 +184,7 @@ export default async function HomePage({
       </div>
 
       <AnimatedSection className="container grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-        <div className="flex flex-col rounded-3xl border border-border bg-card p-6">
+        <div className="flex flex-col rounded-3xl border border-border bg-card p-6 shadow-sm">
           <div className="space-y-4">
             <h2 className="text-2xl font-semibold text-eco">{dict.home.leadMagnetTitle}</h2>
             <p className="text-sm text-foreground/70">
@@ -175,21 +201,24 @@ export default async function HomePage({
             />
           </div>
         </div>
-        <div className="flex flex-col rounded-3xl border border-border bg-card p-6">
+        <div className="flex flex-col rounded-3xl border border-border bg-card p-6 shadow-sm">
           <div className="flex-1 space-y-4">
             <h2 className="text-2xl font-semibold text-eco">{dict.home.trustTitle}</h2>
-            <ul className="space-y-2 text-sm text-foreground/70">
+            <div className="grid gap-3">
               {dict.home.trustItems.map((item) => (
-                <li key={item} className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-accent" />
-                  {item}
-                </li>
+                <div
+                  key={item}
+                  className="flex items-start gap-3 rounded-2xl border border-border bg-white/70 px-4 py-3 text-sm text-foreground/70"
+                >
+                  <span className="mt-1 h-2 w-2 rounded-full bg-accent" />
+                  <span>{item}</span>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
           <Link
             href={withLocale(locale, "/contact")}
-            className="button-cta mt-auto inline-flex w-full justify-center rounded-full border border-border px-5 py-2 text-sm font-semibold !text-accent transition-all hover:bg-eco hover:!text-white"
+            className="button-cta mt-6 inline-flex w-full justify-center rounded-full bg-eco px-5 py-2 text-sm font-semibold text-white shadow-lg shadow-eco/20 transition-all hover:-translate-y-0.5 hover:bg-eco/90"
           >
             {dict.nav.cta}
           </Link>

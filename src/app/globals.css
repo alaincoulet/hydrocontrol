@@ -103,6 +103,12 @@ a {
   will-change: transform;
 }
 
+.button-secondary {
+  position: relative;
+  overflow: hidden;
+  transform: translateZ(0);
+}
+
 .button-cta::before {
   content: "";
   position: absolute;
